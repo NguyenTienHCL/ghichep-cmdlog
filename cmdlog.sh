@@ -82,7 +82,7 @@ if [[ -d "$HOME" ]] && [[ -f "$HOME/.bashrc" ]]; then
     echo 'export HISTTIMEFORMAT="%d/%m/%y %T "' >> ~/.bashrc
     source ~/.bashrc
 elif [[ -d "$HOME" ]] && [[ ! -f "$HOME/.bashrc" ]]; then 
-    curl -o ~/.bashrc  https://raw.githubusercontent.com/nhanhoadocs/ghichep-cmdlog/master/config/"$OS".bashrc > /dev/null 2>&1
+    curl -o ~/.bashrc  https://raw.githubusercontent.com/NguyenTienHCL/ghichep-cmdlog/master/config/"$OS".bashrc > /dev/null 2>&1
 else 
     echo "Please check config \$HOME for this account"
 fi 
@@ -108,14 +108,14 @@ SKEL=/etc/skel
 CREATE_MAIL_SPOOL=yes""" > /etc/default/useradd
 
     mkdir -p /etc/skel
-    curl -o /etc/skel/.bashrc  https://raw.githubusercontent.com/nhanhoadocs/ghichep-cmdlog/master/config/"$OS".bashrc > /dev/null 2>&1
-    curl -o /etc/skel/.profile  https://raw.githubusercontent.com/nhanhoadocs/ghichep-cmdlog/master/config/"$OS".profile > /dev/null 2>&1
+    curl -o /etc/skel/.bashrc  https://raw.githubusercontent.com/NguyenTienHCL/ghichep-cmdlog/master/config/"$OS".bashrc > /dev/null 2>&1
+    curl -o /etc/skel/.profile  https://raw.githubusercontent.com/NguyenTienHCL/ghichep-cmdlog/master/config/"$OS".profile > /dev/null 2>&1
 fi 
 
 # Config rsyslog 
 echo "Config rsyslog"
 mv /etc/rsyslog.{conf,conf.bk}
-curl -o /etc/rsyslog.conf https://raw.githubusercontent.com/nhanhoadocs/ghichep-cmdlog/master/config/"$OS_VER"_rsyslog.cnf > /dev/null 2>&1
+curl -o /etc/rsyslog.conf https://raw.githubusercontent.com/NguyenTienHCL/ghichep-cmdlog/master/config/"$OS_VER"_rsyslog.cnf > /dev/null 2>&1
 systemctl restart rsyslog.service > /dev/null 2>&1 || service rsyslog restart > /dev/null 2>&1
 source ~/.bashrc
 
